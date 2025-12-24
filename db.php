@@ -1,12 +1,15 @@
 <?php
-$host = getenv("DB_HOST");
-$port = intval(getenv("DB_PORT"));
-$db   = getenv("DB_NAME");
-$user = getenv("DB_USER");
-$pass = getenv("DB_PASS");
+$url = getenv("DATABASE_URL");
+if (!$url) die("DATABASE_URL manquante");
+
+$parts = parse_url($url);
+$host = $parts["host"];
+$port = $parts["port"] ?? 3306;
+$user = $parts["user"];
+$pass = $parts["pass"] ?? "";
+$db   = ltrim($parts["path"] ?? "", "/");
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-$conn = new mysqli($host, $user, $pass, $db, $port);
+$conn = new mysqli($host, $user, $pass, $db, intval($port));
 $conn->set_charset("utf8mb4");
 ?>
-
