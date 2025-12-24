@@ -26,4 +26,4 @@ CREATE TABLE IF NOT EXISTS depannages (
 );
 
 INSERT IGNORE INTO users (username, password)
-VALUES ('admin', '$2y$10$8z6z6z6z6z6z6z6z6z6z6uK8z6z6z6z6z6z6z6z6z6z6z6z6z6z6z6');
+VALUES ('admin', '$2y$10$E0WVK6yS40oIE/uITri5.uavq0nA2c9N9cLgc6LZF0lhqxE0XccJ2');
